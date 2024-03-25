@@ -1,0 +1,28 @@
+%YAML 1.1
+---
+argument_specs:
+  # roles/myapp/tasks/main.yml entry point
+  main:
+
+    short_description: >
+      As a demonstration of NETCONF for Microwave, this Ansible role position
+      the Microwave transmit power to a fixed value.
+      **Not intented to provide real usage.**
+
+    author: Jean Rebiffe
+
+    options:
+      power:
+        type: float
+        required: true
+        description: >
+          The desired transmit power, in dBm. Range -99..99 with 0.1 dBm resolution.
+          Example: "-4.2".
+
+      interface:
+        type: str
+        required: true
+        description: >
+          The interface name for which power will be configured.
+          Example: "RTL-63-255-1".
+...

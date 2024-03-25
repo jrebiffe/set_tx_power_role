@@ -1,0 +1,15 @@
+%YAML 1.1
+---
+# tasks file for power
+- name: Set nominal TX power to {{ power }} dBm
+  ansible.netcommon.netconf_config:
+    content:
+      config:
+        interfaces:
+          "@xmlns": "urn:ietf:params:xml:ns:yang:ietf-interfaces"
+          interface:
+            name: "{{ interface }}"
+            rtpc:
+              "@xmlns": "urn:ietf:params:xml:ns:yang:ietf-microwave-radio-link"
+              maximum-nominal-power: "{{ power }}"
+...
