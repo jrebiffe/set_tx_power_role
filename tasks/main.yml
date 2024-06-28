@@ -3,15 +3,15 @@
 # tasks file for power
 - name: Set nominal TX power to {{ power }} dBm
   ansible.netcommon.netconf_config:
+    target: running
     content:
-      <config xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
-          <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
-              <interface xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
-                  <name>{{ interface }}</name>
-                  <rtpc xmlns="urn:ietf:params:xml:ns:yang:ietf-microwave-radio-link">
-                      <maximum-nominal-power>{{ power }}</maximum-nominal-power>
-                  </rtpc>
-              </interface>
-          </interfaces>
-      </config>
+      config:
+        "@xmlns": "urn:ietf:params:xml:ns:netconf:base:1.0"
+        interfaces:
+          "@xmlns": "urn:ietf:params:xml:ns:yang:ietf-interfaces"
+          interface:
+            name: "{{ interface }}"
+            rtpc:
+              "@xmlns": "urn:ietf:params:xml:ns:yang:ietf-microwave-radio-link"
+              maximum-nominal-power: "{{ power }}"
 ...
