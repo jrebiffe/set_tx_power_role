@@ -11,7 +11,7 @@
                   <rtpc xmlns="urn:ietf:params:xml:ns:yang:ietf-microwave-radio-link">
                       <maximum-nominal-power>{{ power }}</maximum-nominal-power>
                   </rtpc>
-              </interfaces>
+              </interface>
           </interfaces>
       </config>
 ...
